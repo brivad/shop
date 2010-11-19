@@ -9,6 +9,6 @@ end
 
 group :test do
   gem 'rspec'
-  gem 'webrat'
+  gem 'webrat', '0.7.1' #0.7.2 didn't worked with rspec 2.1.0 integration tests
   gem 'spork'
 end

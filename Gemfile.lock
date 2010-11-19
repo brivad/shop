@@ -77,7 +77,7 @@ GEM
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.23)
-    webrat (0.7.2)
+    webrat (0.7.1)
       nokogiri (>= 1.2.0)
       rack (>= 1.0)
       rack-test (>= 0.5.3)
@@ -91,7 +91,7 @@ DEPENDENCIES
   rspec-rails
   spork
   sqlite3-ruby
-  webrat
+  webrat (= 0.7.1)
 
 METADATA
   version: 1.0.6

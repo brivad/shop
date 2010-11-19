@@ -3,6 +3,9 @@
   <head>
     <title>Shop | <%= @title %></title>
     <%= csrf_meta_tag %>
+    <%= stylesheet_link_tag 'blueprint/screen', :media => 'screen' %>
+    <%= stylesheet_link_tag 'blueprint/print',  :media => 'print' %>
+    <!--[if lt IE 8]><link rel="stylesheet" href="blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
   </head>
   <body>
     <%= yield %>

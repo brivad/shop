@@ -114,3 +114,18 @@ footer {
 footer nav {
   float: none;
 }
+
+/* Cart */
+
+#line_items .price {
+  text-align: right;
+  font-weight: bold;
+}
+
+#line_items .qty {
+  text-align: center;
+}
+
+#line_items .total {
+  border-top: solid 1px #666
+}

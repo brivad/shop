@@ -1,1 +1,9 @@
-<%= @product.name %> - <%= @product.price %>
+<div class="product">
+  <h3>
+    <%= @product.name %>
+    <%= number_to_euro(@product.price) %>
+  </h3>
+  <div class="actions">
+    <%= button_to "Add to Cart", line_items_path(:product_id => @product), :method => :post %>
+  </div>
+</div>

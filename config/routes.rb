@@ -1,6 +1,15 @@
 Shop::Application.routes.draw do
   
-  get "products/new"
+  resources :products
+  resources :line_items
+  resources :carts
+  
+  match 'cart' => 'carts#show', :id => 'current', :as => :current_cart
+  match 'reset_cart' => 'carts#reset', :id => 'current'
+#  map.current_cart 'cart', :controller => 'carts', :action => 'show', :id => 'current'
+
+  
+  #get "products/new"
 
   # get "pages/home"
   # get "pages/contact"

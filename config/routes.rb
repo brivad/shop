@@ -1,5 +1,7 @@
 Shop::Application.routes.draw do
   
+  get "products/new"
+
   # get "pages/home"
   # get "pages/contact"
   # get "pages/about"

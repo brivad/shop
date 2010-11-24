@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20101123134159
+# Schema version: 20101124171549
 #
 # Table name: carts
 #
@@ -7,6 +7,8 @@
 #  purchased_at :datetime
 #  created_at   :datetime
 #  updated_at   :datetime
+#  address      :text
+#  country      :string(255)
 #
 
 class Cart < ActiveRecord::Base

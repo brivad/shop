@@ -6,6 +6,7 @@ Shop::Application.routes.draw do
   
   match 'cart' => 'carts#show', :id => 'current', :as => :current_cart
   match 'reset_cart' => 'carts#reset', :id => 'current'
+  match 'shipping' => 'carts#shipping', :id => 'current'
 #  map.current_cart 'cart', :controller => 'carts', :action => 'show', :id => 'current'
 
   

@@ -11,4 +11,12 @@ class CartsController < ApplicationController
     redirect_to products_path
   end
   
+  def shipping
+    @cart = current_cart
+  end
+  
+  def update
+    raise request
+  end
+  
 end

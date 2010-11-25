@@ -13,19 +13,49 @@
       <tr class="<%= cycle :odd, :even %>">
         <td><%= line_item.product.name %></td>
         <td class="qty"><%= line_item.quantity %></td>
-        <td class="price"><%= number_to_currency(line_item.unit_price) %></td>
-        <td class="price"><%= number_to_currency(line_item.full_price) %></td>
+        <td class="price"><%= number_to_euro(line_item.unit_price) %></td>
+        <td class="price"><%= number_to_euro(line_item.full_price) %></td>
       </tr>
     <% end %>
-    </tbody>
+  </tbody>
     <tr>
       <td class="total price" colspan="4">
-        Total: <%= number_to_currency @cart.total_price %>
+        Cart Total: <%= number_to_euro @cart.total_price %>
       </td>
     </tr>
-  
+    <% unless session[:shipping_price].blank? %>
+    <tr>
+      <td class="price" colspan="4">
+        Shipping to <%= @cart.country %>: <%= number_to_euro session[:shipping_price] %>
+      </td>
+    </tr>
+    
+    <tr>
+      <td class="total price" colspan="4">
+        Order Total: <%= number_to_euro @cart.total_price+session[:shipping_price].to_i %>
+      </td>
+    </tr>
+    
+    <tr>
+      <td class="" colspan="2">
+        <strong>Shipping Address: [<%= link_to "Change", shipping_path %>]</strong>
+        <%= simple_format @cart.address %>
+        
+      </td>
+      <td class="price" colspan="2">
+        <%= link_to "checkout" %>
+      </td>
+    </tr>
+    
+    <% else %>
+      <tr>
+        <td class="price" colspan="4">
+          <%= link_to "Calculate Shipping price", shipping_path %>
+        </td>
+      </tr>
+    <% end %>
 </table>
 
 <p>
-  <%= link_to "Continue Shopping", products_url %> | <%= link_to "Reset Cart", reset_cart_path%> | Checkout
+  <%= link_to "Continue Shopping", products_url %> | <%= link_to "Reset Cart", reset_cart_path%>
 </p>

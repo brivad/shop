@@ -3,7 +3,7 @@
 <%= form_for(@cart) do |f| %>
   <div class="field">
     <%= f.label :country %><br />
-    <%= f.text_field :country %>
+    <%= f.country_select :country %>
   </div>
   <div class="field">
     <%= f.label :address %><br />

@@ -8,6 +8,7 @@ class CartsController < ApplicationController
     @cart = current_cart
     @cart.destroy
     session[:cart_id] = nil
+    session[:shipping_price] = nil
     redirect_to products_path
   end
   
@@ -16,7 +17,14 @@ class CartsController < ApplicationController
   end
   
   def update
-    raise request
+    @cart = current_cart
+    if @cart.update_attributes(params[:cart]) && @cart.address.present?
+      session[:shipping_price] = "10" #TODO:real calculate
+      flash[:success] = "Shipping calculated."
+      redirect_to @cart
+    else
+      render 'shipping'
+    end
   end
   
 end

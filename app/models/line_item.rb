@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20101123134159
+# Schema version: 20101127172557
 #
 # Table name: line_items
 #
@@ -10,12 +10,14 @@
 #  quantity   :integer
 #  created_at :datetime
 #  updated_at :datetime
+#  variant_id :integer
 #
 
 class LineItem < ActiveRecord::Base
   
   belongs_to :cart
   belongs_to :product
+  belongs_to :variant
 
   def full_price
     unit_price * quantity

@@ -3,6 +3,22 @@
     <%= @product.name %>
     <%= number_to_euro(@product.price) %>
   </h3>
+  
+  <%= form_for(LineItem.new) do |f| %>
+    <div class="field">
+      <%= f.label :variant_id %><br />
+      <%= f.select :variant_id, @product.variants.collect {|c| [ c.value, c.id ] }  %>
+
+      <%= f.hidden_field :product_id, :value => @product.id %>
+      
+    </div>
+
+
+    <div class="actions">
+      <%= f.submit "Add to Cart" %>
+    </div>
+  <% end %>
+  
   <div class="actions">
     <%= button_to "Add to Cart", line_items_path(:product_id => @product), :method => :post %>
   </div>

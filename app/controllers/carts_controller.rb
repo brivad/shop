@@ -19,12 +19,23 @@ class CartsController < ApplicationController
   def update
     @cart = current_cart
     if @cart.update_attributes(params[:cart]) && @cart.address.present?
-      session[:shipping_price] = "10" #TODO:real calculate
+      
+      
+      calculate_shipping(@cart.country)
+      
       flash[:success] = "Shipping calculated."
-      redirect_to @cart
+      redirect_to current_cart_path
     else
       render 'shipping'
     end
   end
   
+  
+  private
+  
+  def calculate_shipping(country)
+    session[:shipping_price] = "10" #TODO:real calculate
+    
+  end
+
 end

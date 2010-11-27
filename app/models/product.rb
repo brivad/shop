@@ -12,10 +12,12 @@
 #
 
 class Product < ActiveRecord::Base
-  
+  has_many :variants
+    
   validates :name, :presence => true
   validates :price, :presence => true
   
   #TODO: advanced validations
+  
    
 end

@@ -23,7 +23,7 @@ class Cart < ActiveRecord::Base
   
   def paypal_url(return_url,shipping_price)  
     values = {  
-      :business => "seller_1290453557_biz@gmail.com",  
+      :business => "seller_1290453557_biz@gmail.com",  #TODO: move in configuration file ouside git
       :cmd => "_cart",  
       :upload => 1,  
       :return => return_url,  

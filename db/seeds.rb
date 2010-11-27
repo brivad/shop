@@ -5,3 +5,22 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+
+
+products =  [
+              {:name=>"Product 1",
+              :description=>"Product 1 description", 
+              :price=>"10"},
+              
+              {:name=>"Product 2",
+              :description=>"Product 2 description", 
+              :price=>"10"},
+              
+              {:name=>"Product 3",
+              :description=>"Product 3 description", 
+              :price=>"25"}
+            ]
+            
+products.each do |p|
+  Product.create! p
+end

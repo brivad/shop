@@ -5,8 +5,9 @@ class CartsController < ApplicationController
   end
   
   def reset
-    @cart = current_cart
-    @cart.destroy
+    if @cart = current_cart
+      @cart.destroy
+    end
     session[:cart_id] = nil
     session[:shipping_price] = nil
     redirect_to products_path

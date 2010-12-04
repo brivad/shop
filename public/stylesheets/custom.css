@@ -120,10 +120,11 @@ footer nav {
 #line_items .price {
   text-align: right;
   font-weight: bold;
+	white-space:nowrap;
 }
 
 #line_items .qty {
-  text-align: center;
+  text-indent:2em;
 }
 
 #line_items .total {

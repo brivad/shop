@@ -18,6 +18,10 @@ products =  [
               
               {:name=>"Product 3",
               :description=>"Product 3 description", 
+              :price=>"25"},
+              
+              {:name=>"Product 4 very very very long name for this product, very very very long",
+              :description=>"Product 3 description", 
               :price=>"25"}
             ]
             

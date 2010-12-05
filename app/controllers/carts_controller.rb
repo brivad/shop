@@ -20,12 +20,13 @@ class CartsController < ApplicationController
   def update
     @cart = current_cart
     if @cart.update_attributes(params[:cart]) && @cart.address.present?
-      session[:shipping_price] = "10" #TODO:real calculate
+      calculate_shipping
       flash[:success] = "Shipping calculated."
       redirect_to @cart
     else
       render 'shipping'
     end
   end
+  
   
 end

@@ -16,6 +16,8 @@ class Product < ActiveRecord::Base
   validates :name, :presence => true
   validates :price, :presence => true
   
+  has_many :line_items
+  
   #TODO: advanced validations
    
 end

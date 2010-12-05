@@ -10,19 +10,23 @@
 products =  [
               {:name=>"Product 1",
               :description=>"Product 1 description", 
-              :price=>"10"},
+              :price=>"10",
+              :shipping_group => 1},
               
               {:name=>"Product 2",
               :description=>"Product 2 description", 
-              :price=>"10"},
+              :price=>"10",
+              :shipping_group => 1},
               
               {:name=>"Product 3",
               :description=>"Product 3 description", 
-              :price=>"25"},
+              :price=>"25",
+              :shipping_group => 2},
               
               {:name=>"Product 4 very very very long name for this product, very very very long",
               :description=>"Product 3 description", 
-              :price=>"25"}
+              :price=>"25",
+              :shipping_group => 2}
             ]
             
 products.each do |p|

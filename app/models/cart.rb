@@ -14,6 +14,9 @@
 class Cart < ActiveRecord::Base
   
   has_many :line_items
+  has_many :products, :through => :line_items
+  
+
   
   # def add_product(product_id)
   #   current_item = line_items.where(:product_id => product_id).first

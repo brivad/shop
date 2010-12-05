@@ -12,7 +12,7 @@
   <tbody>
     <% for line_item in @cart.line_items %>
       <tr class="<%= cycle :odd, :even %>">
-        <td><%= line_item.product.name %></td>
+        <td><%= line_item.product.name %> - <%= line_item.product.shipping_group %></td>
         <td class="qty"><%= line_item.quantity %></td>
         <td class="price"><%= number_to_euro(line_item.unit_price) %></td>
         <td class="price"><%= number_to_euro(line_item.full_price) %></td>

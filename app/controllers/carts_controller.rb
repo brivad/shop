@@ -10,6 +10,7 @@ class CartsController < ApplicationController
     end
     session[:cart_id] = nil
     session[:shipping_price] = nil
+    flash[:notice] = "Your cart is now empty."
     redirect_to products_path
   end
   
@@ -24,6 +25,7 @@ class CartsController < ApplicationController
       flash[:success] = "Shipping calculated."
       redirect_to @cart
     else
+      flash[:error] = "Please insert your address for shipping."
       render 'shipping'
     end
   end

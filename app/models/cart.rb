@@ -50,8 +50,9 @@ class Cart < ActiveRecord::Base
     line_items.each_with_index do |item, index|  
       values.merge!({  
         "amount_#{index + 1}" => item.unit_price,  
-        "item_name_#{index + 1}" => item.product.name,  
-        "item_number_#{index + 1}" => item.product.id,  
+        "item_name_#{index + 1}" => item.product.name + (" (#{item.product.variant_name}: #{item.product_variant})" if item.product.variant_name).to_s,  
+
+       # "item_number_#{index + 1}" => item.product.id,  
         "quantity_#{index + 1}" => item.quantity  
       })  
     end  

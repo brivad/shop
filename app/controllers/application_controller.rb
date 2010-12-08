@@ -41,6 +41,16 @@ class ApplicationController < ActionController::Base
       end
     end
     
+    if $COUNTRIES[:z4].include? current_cart.country
+      if sgc[:g1] == 1 && stc == 1      #in total 1 product in group 1
+        session[:shipping_price] = "13"
+      elsif sgc[:g1] == 2 && stc == 2   #in tatal 2 products in group 1
+        session[:shipping_price] = "17"
+      else
+        session[:shipping_price] = "35"
+      end
+    end
+    
   end
   
   
@@ -121,7 +131,6 @@ class ApplicationController < ActionController::Base
             "Argentina",
             "Armenia",
             "Aruba",
-            "Australia",
             "Azerbaijan",
             "Bahamas",
             "Bahrain",
@@ -230,7 +239,6 @@ class ApplicationController < ActionController::Base
             "Nepal",
             "Netherlands Antilles",
             "New Caledonia",
-            "New Zealand",
             "Nicaragua",
             "Niger",
             "Nigeria",
@@ -301,7 +309,9 @@ class ApplicationController < ActionController::Base
             "Western Sahara",
             "Yemen",
             "Zambia",
-            "Zimbabwe"]
+            "Zimbabwe"],
+    :z4 => ["Australia",  
+            "New Zealand"]
     } unless const_defined?("COUNTRIES")
   
 end

@@ -1,10 +1,2 @@
 <h2>Products</h2>
-<% @products.each do |product| %>
-  <div class="product-box round">
-    <h3>
-      <%= link_to product.name, product %>
-      <%= number_to_euro(product.price) %>
-    </h3>
-    <%= render product %>
-  </div>
-<% end %>
+<%= render @products %>

@@ -2,6 +2,7 @@ class CartsController < ApplicationController
   
   def show
     @cart = current_cart
+    redirect_to(products_path, :notice=>"Shopping cart is empty, add some products!") if current_cart.line_items.empty? 
   end
   
   def reset
@@ -23,9 +24,9 @@ class CartsController < ApplicationController
     if @cart.update_attributes(params[:cart]) && @cart.address.present?
       calculate_shipping
       flash[:success] = "Shipping calculated."
-      redirect_to @cart
+      redirect_to current_cart_path
     else
-      flash[:error] = "Please insert your address for shipping."
+      flash[:error] = "Please insert your shipping address."
       render 'shipping'
     end
   end

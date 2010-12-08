@@ -1,12 +1,17 @@
-<%= form_for(LineItem.new) do |f| %>
-  <%= f.hidden_field :product_id, :value => product.id %>
-  <% if product.variant_name %>
-    <div class="field">
-      <%= f.label :product_variant, "choose "+ product.variant_name.to_s %><br />
-      <%= f.select :product_variant, product.variants.first[1].collect %>
+<div class="product-box round">
+  <h3><%= link_to product.name, product %></h3>
+  <h4><%= number_to_euro(product.price) %></h4>
+  <p><%= product.description %></p>
+  <%= form_for(LineItem.new) do |f| %>
+    <%= f.hidden_field :product_id, :value => product.id %>
+    <% if product.variant_name %>
+      <div class="field">
+        <%= f.label :product_variant, "choose "+ product.variant_name.to_s %><br />
+        <%= f.select :product_variant, product.variants.first[1].collect %>
+      </div>
+    <% end %>
+    <div class="actions">
+      <%= f.submit "Add to Cart"%>
     </div>
   <% end %>
-  <div class="actions">
-    <%= f.submit "Add to Cart"%>
-  </div>
-<% end %>
+</div>

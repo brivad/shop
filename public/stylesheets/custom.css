@@ -93,6 +93,14 @@ a.products_button {
   padding: 20px;
 }
 
+/* Products */
+
+.product-box{
+	background: #cff;
+	padding:10px;
+	margin-bottom:10px;
+}
+
 /* Round corners */
 
 .round {

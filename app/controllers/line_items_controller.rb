@@ -1,14 +1,16 @@
 class LineItemsController < ApplicationController
   
   def create
-     @product = Product.find(params[:product_id])
-     current_item = current_cart.line_items.where(:product_id => @product).first
+     @product = Product.find(params[:line_item][:product_id])
+     @variant = params[:line_item][:product_variant]
+     current_item = current_cart.line_items.where(:product_id => @product, :product_variant => @variant).first
      if current_item
        current_item.quantity += 1
        current_item.save!
      else
        @line_item = LineItem.create!( :cart => current_cart, 
                                       :product => @product, 
+                                      :product_variant => @variant,
                                       :quantity => 1, 
                                       :unit_price => @product.price )
      end

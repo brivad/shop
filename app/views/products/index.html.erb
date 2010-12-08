@@ -1,12 +1,10 @@
 <h2>Products</h2>
 <% @products.each do |product| %>
-  <div class="product">
+  <div class="product-box round">
     <h3>
       <%= link_to product.name, product %>
       <%= number_to_euro(product.price) %>
     </h3>
-    <div class="actions">
-      <%= button_to "Add to Cart", line_items_path(:product_id => product), :method => :post%>
-    </div>
+    <%= render product %>
   </div>
 <% end %>

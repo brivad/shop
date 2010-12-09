@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(:version => 20101209173502) do
     t.datetime "updated_at"
     t.text     "address"
     t.string   "country"
-    t.integer  "invoice_uid"
+    t.string   "invoice_uid"
   end
 
   create_table "line_items", :force => true do |t|

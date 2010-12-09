@@ -11,7 +11,7 @@ class PaymentNotificationsController < ApplicationController
   end
   
   def search_cart_id(invoice)
-    Cart.find_by_invoice_uid(invoice).id
+    Cart.find_by_invoice_uid(invoice.to_s).id
   end
   
 end

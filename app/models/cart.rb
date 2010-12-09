@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20101124171549
+# Schema version: 20101209173502
 #
 # Table name: carts
 #
@@ -9,6 +9,7 @@
 #  updated_at   :datetime
 #  address      :text
 #  country      :string(255)
+#  invoice_uid  :integer
 #
 
 class Cart < ActiveRecord::Base
@@ -16,36 +17,23 @@ class Cart < ActiveRecord::Base
   has_many :line_items
   has_many :products, :through => :line_items
   
-
-  
-  # def add_product(product_id)
-  #   current_item = line_items.where(:product_id => product_id).first
-  #   if current_item
-  #     current_item.quantity += 1
-  #   else
-  #     current_item = LineItem.new(:product_id=>product_id)
-  #     current_item.unit_price = current_item.product.price
-  #     line_items << current_item
-  #   end
-  #   current_item
-  # end
+  after_create :generate_invoice_uid
   
   def total_price
     # convert to array so it doesn't try to do sum on database directly
     line_items.to_a.sum(&:full_price)
   end
   
-  
   def paypal_url(return_url, shipping_price, notify_url)  
     values = {  
       :charset => "utf-8",
-      :business => "seller_1290453557_biz@gmail.com",  #TODO: move in configuration file ouside git
+      :business => "seller_1290453557_biz@gmail.com",  #TODO: move this and other in configuration file ouside git or example one
       :cmd => "_cart",  
       :upload => 1,  
       :return => return_url,
       :rm => 2, 
       :cbt => "Return to Shop",
-      :invoice => id,
+      :invoice => invoice_uid,                                   #it should send an id different from the cart_id...
       :currency_code => "EUR",
       :handling_cart => shipping_price,
       :notify_url => notify_url
@@ -61,6 +49,13 @@ class Cart < ActiveRecord::Base
       })  
     end  
     "https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.map { |k,v| "#{k}=#{v}"  }.join("&")  
+  end
+  
+  private
+  
+  def generate_invoice_uid
+    uid = (Time.now.to_i.to_s + id.to_s).to_i
+    update_attributes! :invoice_uid => uid
   end
   
   

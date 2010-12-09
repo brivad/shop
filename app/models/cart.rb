@@ -54,7 +54,7 @@ class Cart < ActiveRecord::Base
   private
   
   def generate_invoice_uid
-    uid = (Time.now.to_i.to_s + id.to_s).to_i
+    uid = Time.now.to_i.to_s + id.to_s
     update_attributes! :invoice_uid => uid
   end
   

@@ -1,8 +1,13 @@
 Shop::Application.routes.draw do
   
+  #get "payment_notifications/create"
+  resources :payment_notifications
+  post "pages/thanks", :as => :thanks
+  
   resources :products
   resources :line_items
   resources :carts
+  
   
   match 'cart' => 'carts#show', :id => 'current', :as => :current_cart
   match 'reset_cart' => 'carts#reset', :id => 'current'

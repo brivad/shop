@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101208140740) do
+ActiveRecord::Schema.define(:version => 20101208185720) do
 
   create_table "carts", :force => true do |t|
     t.datetime "purchased_at"
@@ -28,6 +28,15 @@ ActiveRecord::Schema.define(:version => 20101208140740) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "product_variant"
+  end
+
+  create_table "payment_notifications", :force => true do |t|
+    t.text     "params"
+    t.string   "status"
+    t.string   "transaction_id"
+    t.integer  "cart_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "products", :force => true do |t|

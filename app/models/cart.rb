@@ -36,15 +36,19 @@ class Cart < ActiveRecord::Base
   end
   
   
-  def paypal_url(return_url,shipping_price)  
+  def paypal_url(return_url, shipping_price, notify_url)  
     values = {  
+      :charset => "utf-8",
       :business => "seller_1290453557_biz@gmail.com",  #TODO: move in configuration file ouside git
       :cmd => "_cart",  
       :upload => 1,  
-      :return => return_url,  
+      :return => return_url,
+      :rm => 2, 
+      :cbt => "Return to Shop",
       :invoice => id,
       :currency_code => "EUR",
-      :handling_cart => shipping_price
+      :handling_cart => shipping_price,
+      :notify_url => notify_url
     }  
 
     line_items.each_with_index do |item, index|  
@@ -58,5 +62,6 @@ class Cart < ActiveRecord::Base
     end  
     "https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.map { |k,v| "#{k}=#{v}"  }.join("&")  
   end
+  
   
 end

@@ -48,7 +48,7 @@
         
       </td>
       <td class="price" colspan="2">
-        <%= link_to "Checkout", @cart.paypal_url(products_url,session[:shipping_price].to_i) %>  
+        <%= link_to "Checkout", @cart.paypal_url(thanks_url, session[:shipping_price].to_i, payment_notifications_url) %>  
       </td>
     </tr>
     

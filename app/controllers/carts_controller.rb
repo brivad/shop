@@ -1,6 +1,7 @@
 class CartsController < ApplicationController
   
   def show
+    @title = "Shopping cart"
     @cart = current_cart
     redirect_to(products_path, :notice=>"Shopping cart is empty, add some products!") if current_cart.line_items.empty? 
   end
@@ -16,6 +17,7 @@ class CartsController < ApplicationController
   end
   
   def shipping
+    @title = "Shipping"
     @cart = current_cart
   end
   

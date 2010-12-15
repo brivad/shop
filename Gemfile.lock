@@ -99,6 +99,3 @@ DEPENDENCIES
   spork
   sqlite3-ruby
   webrat (= 0.7.1)
-
-METADATA
-  version: 1.0.6
